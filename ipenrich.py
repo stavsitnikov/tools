@@ -1,4 +1,5 @@
 import requests
+import ipaddress
 
 #API key for VirusTotal, get it from https://www.virustotal.com/gui/join-us
 API_KEY = ""
@@ -29,13 +30,27 @@ def enrich_ip_address(ip_address):
     else:
         tor = False
     
+    # Check if the IP address is from AWS
+    def is_aws_ip(ip_address):
+        # Check if the input IP address is within the AWS IP address range
+        try:
+            ip = ipaddress.ip_address(ip_address)
+            if ip in ipaddress.ip_network("18.0.0.0/15") or ip in ipaddress.ip_network("35.0.0.0/16") or ip in ipaddress.ip_network("52.0.0.0/15"):
+                return True
+            else:
+                return False
+        except ValueError:
+            return False
+    aws = is_aws_ip(ip_address)
+
     # Return the enriched data as a dictionary
     return {
         'ip_address': ip_address,
         'region': region,
         'country': country,
         'malicious': malicious,
-        'tor': tor
+        'tor': tor,
+        'aws': aws
     }
 
 # Check My home IP
