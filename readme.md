@@ -1,1 +1,1 @@
-ipenrich - a pyhton script that enriches an ip address with geo location, check if its malicues and check if its part of TOR network
+ipenrich - a python script that enriches an ip address with geo location, check if its molecules and check if its part of TOR network
