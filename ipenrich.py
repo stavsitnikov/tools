@@ -1,11 +1,12 @@
 import requests
 
-#virustotal API key, get one from https://www.virustotal.com/gui/join-us
+#API key for VirusTotal, get it from https://www.virustotal.com/gui/join-us
 API_KEY = ""
 
 def enrich_ip_address(ip_address):
     # Use the IPInfo API to get geolocation information for the IP address
     # Free plan is up to 50K requests per month
+    
     response = requests.get(f"https://ipinfo.io/{ip_address}/json")
     data = response.json()
 
@@ -37,6 +38,6 @@ def enrich_ip_address(ip_address):
         'tor': tor
     }
 
-# The ip address to check
-enriched_data = enrich_ip_address("8.8.8.8.8")
+# Check My home IP
+enriched_data = enrich_ip_address("8.8.8.8")
 print(enriched_data)
