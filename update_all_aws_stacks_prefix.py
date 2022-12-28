@@ -38,7 +38,7 @@ for region in regions:
         stack_name = stack['StackName']
 
         try:            
-         # Update the stack using the existing template, UsePreviousValue required parameters from running template Parameters:[LightlyticsApiUrl, LightlyticsAwsAccountId, RegionsToDeploy, ExternalId, AccountAuthToken, TemplateVersion, LightlyticsInternalAccountId] add capabilities=['CAPABILITY_NAMED_IAM'] to the update_stack call if you are using IAM roles in your template       
+         # Update the stack using the existing template
              cfn_client.update_stack(StackName=stack_name, UsePreviousTemplate=True)    
        # Wait for the update to complete
              cfn_client.get_waiter('stack_update_complete').wait(StackName=stack_name)
