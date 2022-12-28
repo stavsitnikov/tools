@@ -53,6 +53,6 @@ def enrich_ip_address(ip_address):
         'aws': aws
     }
 
-# Check My home IP
+# Ip to check
 enriched_data = enrich_ip_address("8.8.8.8")
 print(enriched_data)
