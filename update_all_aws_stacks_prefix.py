@@ -26,7 +26,7 @@ for region in regions:
     # Get the list of stacks in the region
     stacks = cfn_client.list_stacks()['StackSummaries']
 
-    # Filter the list of stacks to only include a specific prefix and status is complete create or update complete, and name not contains LightlyticsInitLambdas
+    # Filter the list of stacks to only include a specific prefix and status is complete create or update complete
 
     stacks = [stack for stack in stacks if (prefix in stack['StackName'] and (stack['StackStatus'] == 'CREATE_COMPLETE' or stack['StackStatus'] == 'UPDATE_COMPLETE')) and not n1prefix in stack['StackName']and not n2prefix in stack['StackName']]
     
